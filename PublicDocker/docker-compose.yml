@@ -1,9 +1,9 @@
 version: '3'
-networks:
-  privatedocker_common_network:
-    external: true
-  privatedocker_ipfs_network:
-    external: true
+# networks:
+#   privatedocker_common_network:
+#     external: true
+#   privatedocker_ipfs_network:
+#     external: true
 services:
   wallet:
     build: 
@@ -23,8 +23,8 @@ services:
       context: "./pl_gprm"
     ports:
       - 4005:4005
-    networks:
-      - privatedocker_ipfs_network
+    # networks:
+    #   - privatedocker_ipfs_network
 # networks:
 #   privatedocker_ipfs_network:
 #     external: true
@@ -35,8 +35,8 @@ services:
       context: "./api_services"
     ports: 
       - 8005:8005
-    networks:
-      - privatedocker_common_network
+    # networks:
+    #   - privatedocker_common_network
 # networks:
 #   privatedocker_common_network:
 #     external: true
