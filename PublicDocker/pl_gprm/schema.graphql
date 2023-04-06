@@ -1,0 +1,108 @@
+scalar JSON
+input InputAccount {
+    #    publicKey: String!
+    paramID: String!
+    codeSign: String!
+}
+enum TxnType {
+    create_account
+    update_account
+    define_schema
+    redefine_schema
+    define_sm
+    redefine_sm
+    create_sm
+    update_sm
+    attach_sm
+    subscribe_sm
+    extend_sm
+    extend_schema
+    define_smartchaincode
+    extend_smartchaincode
+}
+input InputSignedTxn {
+    from:String!
+    fromSignedHash:String!
+    txnType:TxnType!
+    xchangeParamIDs:[String!]
+    subscribers:JSON
+    # docEntropy = IF PUBLIC HASH(PAYLOAD) -> CODESIGN(HASH(PAYLOAD),PRIVATE_KEY)
+    # docEntropy = IF PRIVATE PAYLOAD(:16) + PAYLOAD(payload.len-16:)
+    docEntropy:String!
+    docID: String! #ParamID
+}
+
+input InputSignedStateTxn {
+    from:String!
+    fromSignedHash:String!
+    txnType:TxnType!
+    xchangeParamIDs:[String!]
+    subscribers:JSON
+    smartChainCode: SmartChainCode
+    # docEntropy = IF PUBLIC HASH(PAYLOAD) -> CODESIGN(HASH(PAYLOAD),PRIVATE_KEY)
+    # docEntropy = IF PRIVATE PAYLOAD(:16) + PAYLOAD(payload.len-16:)
+    docEntropy:String!
+    stateTo: String! #
+    stateMachine: [String!]
+    docID: String! #ParamID
+    roles: JSON
+    props: JSON
+    #    gasPrice: String!
+    #    gas: String!
+    #    value: String
+    #    msgPath:String
+}
+
+input SmartChainCode {
+    input: SmartChainCodeInput
+    output: SmartChainCodeOutput
+    props: JSON
+}
+input  SmartChainCodeInput{
+    codeID: String!
+    function: String
+    txnPoolHash: String!
+}
+input  SmartChainCodeOutput{
+    hash: String
+    result: String
+    status: Int!
+    events: [JSON!]
+}
+
+input InputPayload {
+    payload : String!
+#    pType : PayloadType!
+}
+enum PayloadType {
+    PUBLIC,
+    PRIVATE
+}
+type Account {
+    publicKey: String!
+    paramID: String!
+    #    value: String!
+}
+type TxnResult {
+    txnHash: String!
+}
+
+type Payload {
+    data: String!
+    #    key: String
+}
+type Query {
+    serviceStatus: Boolean!
+    getAccount(paramID: String!): Account
+    getPayload(paramID: String!, codeSign: String!,  txnID: String!): Payload
+}
+type Mutation{
+    account(payload: InputAccount!): TxnResult
+    schema(message: InputSignedTxn!, payload:InputPayload!):TxnResult
+    stateMachine(message: InputSignedTxn!, payload: InputPayload!):TxnResult
+    stateTxn(message: InputSignedStateTxn!, payload: InputPayload): TxnResult
+}
+schema {
+    query: Query
+    mutation: Mutation
+}

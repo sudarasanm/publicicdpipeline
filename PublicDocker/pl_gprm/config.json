@@ -1,0 +1,56 @@
+{
+  "serverConfig": {
+    "nodePrivateKey": "f69b673b7dfbf1ad90a16bbb46c7e34fead8c6de5df8b3a05b90bce88036dcea",
+    "storageService": {
+      "host": "140.238.243.37:5001"
+    },
+    "enConfig": {
+      "path": "en.json"
+    },
+    "gprmChainService": {
+      "host": "0.0.0.0:5005",
+      "xchangeParamIDs": []
+    },
+    "monitorService": {
+      "host": ":4006"
+    },
+    "fileConfig":{
+      "upload":"/upload",
+      "download":"/download"
+    },
+    "httpService":{
+      "host":":4005",
+      "isSecureConnection":false
+    },
+    "sslConfig":{
+      "privateKey":"./certificate/server.pem",
+      "crtFile":"./certificate/server.pem"
+    }
+  },
+  "paramBlockChainNode": {
+    "dbEndpoint": "http://140.238.182.66:5984/",
+    "accountConfig": {
+      "name": "accounts",
+      "userName": "admin",
+      "password": "aa45644ae0735b5b9f1d5c3acd22e3e8f0af3334bcc7b8decb9299adc6333c2c16fa563199046b84ec3d402173c081a5aea1886fb3635cfc806fbb8cc33cc2f6"
+    },
+    "schemaConfig": {
+      "name": "schema",
+      "userName": "admin",
+      "password": "aa45644ae0735b5b9f1d5c3acd22e3e8f0af3334bcc7b8decb9299adc6333c2c16fa563199046b84ec3d402173c081a5aea1886fb3635cfc806fbb8cc33cc2f6"
+    },
+    "smConfig": {
+      "name": "statemachine",
+      "userName": "admin",
+      "password": "aa45644ae0735b5b9f1d5c3acd22e3e8f0af3334bcc7b8decb9299adc6333c2c16fa563199046b84ec3d402173c081a5aea1886fb3635cfc806fbb8cc33cc2f6"
+    },
+    "stateTxnPoolConfig": {
+      "name": "statetxnpool",
+      "userName": "admin",
+      "password": "aa45644ae0735b5b9f1d5c3acd22e3e8f0af3334bcc7b8decb9299adc6333c2c16fa563199046b84ec3d402173c081a5aea1886fb3635cfc806fbb8cc33cc2f6"
+    },
+    "gprcServerConfig": {
+      "url": "140.238.182.66:50051"
+    }
+  }
+}

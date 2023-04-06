@@ -1,0 +1,58 @@
+version: '3'
+networks:
+  privatedocker_common_network:
+    external: true
+  privatedocker_ipfs_network:
+    external: true
+services:
+  wallet:
+    build: 
+      dockerfile: Dockerfile
+      context: "./build"
+    ports:
+      - 9000:9000
+  datainjector: 
+    container_name: datainjector
+    build: 
+      dockerfile: Dockerfile
+      context: "./dataInjector"
+    ports: 
+      - 8000:8000
+  pl-gprm:
+    build: 
+      context: "./pl_gprm"
+    ports:
+      - 4005:4005
+    networks:
+      - privatedocker_ipfs_network
+# networks:
+#   privatedocker_ipfs_network:
+#     external: true
+  wallet_api: 
+    container_name: wallet_api_services
+    build: 
+      dockerfile: Dockerfile
+      context: "./api_services"
+    ports: 
+      - 8005:8005
+    networks:
+      - privatedocker_common_network
+# networks:
+#   privatedocker_common_network:
+#     external: true
+
+    # external_links:
+    #   - mongodb:mongodb
+    # extends:
+    #   file: ../PrivateDocker/docker-compose-mongo.yml
+    #   service: mongo
+    # image: mongo  
+
+    # depends_on:
+    #   - mongo
+    # environment:
+      # API_URL: mongodb://0.0.0.0:27017  
+    # extends:
+    #   file: ../PrivateDocker/docker-compose.yml
+    #   service: mongodb
+    # image: mongodb

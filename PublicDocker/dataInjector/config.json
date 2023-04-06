@@ -1,0 +1,102 @@
+{
+  "config": {
+      "sizeOfFile": 10000000,
+      "account": {
+          "paramID": "0xbF27Af9f08C6B1Ea08E6cc9dbbF3a5cad45B09c4",
+          "privateKey": "acac5c88581286a2405d724d5e7f93bc70c03ab45fc355c32a032cd41bd8abd3",
+          "publicKey": "0f2d965d12f9edf93636d59c7858215c5d4cf9770452d5b0b4c30aada3858f91a431503217636bf54d8260b5104ba82a770ae95e01adeffae47b69d9164db895"
+      },
+      "pType": "PRIVATE",
+      "xchangeParamIDs": [
+          {
+              "xchangeID": "0x5e282dE188b68864e3B140287640c075C46F4fF4",
+              "xchangepublickey": "133e15a25b2657b7d3177ca1281a261099db2fdc9993209b853690fc7ce805fbb75fe5fd9bd839509de8a67fde8afc1cf24f3743272f06cf4f1ac87b2a64bf90"
+          }
+      ]
+  },
+  "http": {
+      "port": ":8000",
+      "isSecureConnection": false,
+      "sslConfig": {
+          "privateKey": "/home/ubuntu/certificate/server.pem",
+          "crtFile": "/home/ubuntu/certificate/server.pem"
+      }
+  },
+  "gprm": {
+      "graphqlUrl": "https://gprm.paramwallet.com:4005/graphql",
+      "method": "POST",
+      "tlsClientConfig": "",
+      "graphqlSchema": "{\"query\":\"mutation stateTxn ($message: InputSignedStateTxn!, $payload: InputPayload) {\\n    stateTxn (message: $message, payload: $payload) {\\n        txnHash\\n    }\\n}\","
+  },
+  "stateMachine": {
+      "receiptSM": "@statemachine/Commerce:public:0x38ef9dc29a870df1c11a34fcb880c5d07fc655d88ebb47b9da056c363311f631",
+      "contactSM": "@statemachine/Contact:public:0xc09ed567520ac9dff8fb832304742b89227825228db47c224cc2aa3993eb66b7",
+      "catalogueSM": "@statemachine/Catalogue:public:0x3a90d2003985388c43b27dfeec018422eb5c04ab413f2327ad128db4e6f541b5"
+  },
+  "auth": {
+      "appKey": "adbe8e9e77368a82e8a8",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImQ3YjU3NDFiYmM5ZTE3YTY0NTQ4MTJiNTA2MjUzMWVkMTU3ZGU1ZDJhNTQ1MDg1MDdlNzJhZjFlZGQ0NjAwMTMiLCJub25jZSI6Ijc0aXFQUFNQYlpFb2N5Zk5yeFhlM0pualBkVWc0OXVxWGlqVlZROTNORHdGYVVCZlg3cW9CWTgyRHVUNHVjZ1Z6VVFZcHFGbjg1VGc0T3dHa2JaUVowVHlWMTdhNmdJZWdidGpPc2Q2REdLQ3JLM2JzM3hlSncyQ0c1T3hPSmw1IiwiaWF0IjoxNjM4MzY2NDA2LCJleHAiOjE2OTk5MDI0MDZ9.D49epJh5giNh3oYA-geTzXC1UzvA4XfMwB7d_n6-2zo"
+  },
+  "mongoDBConfig": {
+      "url": "mongodb://0.0.0.0:27017",
+      "userName": "",
+      "password": "",
+      "timeout": 1
+  },
+  "localmongoDBConfig": {
+      "url": "mongodb://0.0.0.0:27017",
+      "userName": "",
+      "password": "",
+      "timeout": 1
+  },
+  "dbCollections": {
+      "contact": {
+          "query": false,
+          "role": "Supplier",
+          "dbCollectionName": "approve_public:0xc09ed567520ac9dff8fb832304742b89227825228db47c224cc2aa3993eb66b7",
+          "privateKey": "",
+          "publicKey": ""
+      },
+      "catalogue": "addcatalogue_public:0x3a90d2003985388c43b27dfeec018422eb5c04ab413f2327ad128db4e6f541b5",
+      "smConfig": {
+          "dbConfig": "0x5e282dE188b68864e3B140287640c075C46F4fF4",
+          "smDBConfig": "state_machine",
+          "schemaDBConfig": "schema",
+          "statehistory": "statehistory"
+      }
+  },
+  "enn": {
+      "URL": "https://keystore.paramwallet.com:8005/d/v1/getParamID",
+      "method": "GET",
+      "auth": {
+          "appKey": "acf7befbd2a13d19d4f1",
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjU2NWE1YjM4NWIyMzUzZDFiM2RiMGY5Mjg4NDk1M2M0ODA5MTBkYjAxNmU5OTFiOGE4MTc0YzcxMmFmNDZlZjkiLCJub25jZSI6IkJmWFZQVlRVZk5yTDl1R09GaWJYM1I3cGR5YUx4WWlLRVN6Qm5oMlc1UWxNcUFOUzAwWXJUQ1lqY2VqanoxTTlwOE4zTDdQb2pYRmN1UnVBcWllbXA5YVhCc3loclpxdXplcmJmc1RLMmhDYkdVOW5YOHRTSjZkdGI1VkY4VXA2IiwiaWF0IjoxNjcxMTgxMTI3LCJleHAiOjE2NzE0NDAzMjd9.agaXqU_e_MK0N5TSUBsl_FcRmMdFUI0Kdg9N0HM8I9E"
+      }
+  },
+  "emailConfig": {
+      "fromEmailID": "shubhamgupta@divum.in",
+      "emailPassword": "sHUBHA1@",
+      "toEmailList": [
+          "sachinprasanna@param.network"
+      ],
+      "ccEmailList": ""
+  },
+  "batch": 100,
+  "schemaPath": "./schema/",
+  "Contact": {
+      "C_Organization": "DECATHLON SPORTS INDIA PRIVATE LIMITED",
+      "C_TaxID": "36AAACL9861H1Z7",
+      "C_StreetAddress": "Survey no 99/1, Hyderabad Rangareddy,",
+      "C_AddressLocality": "Hyderabad",
+      "C_City": "Rangareddy",
+      "C_Region": "Telangana",
+      "C_PostalCode": "500409",
+      "C_Country": "India",
+      "C_Email": "admin@decathlon.com",
+      "C_Identifier": "0xbF27Af9f08C6B1Ea08E6cc9dbbF3a5cad45B09c4",
+      "C_Description": "",
+      "C_Department": "",
+      "C_Telephone": "",
+      "C_PenID": "VTUU5094"
+  }
+}
