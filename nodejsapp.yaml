@@ -2,22 +2,22 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: nodejs-app
+  name: nodejsps-app
   namespace: default
   labels:
-    app: nodejs-app
+    app: nodejsps-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nodejs-app
+      app: nodejsps-app
   template:
     metadata:
       labels:
-        app: nodejs-app
+        app: nodejsps-app
     spec:
       containers:
-      - name: nodejs-app
+      - name: nodejsps-app
         image: "sudrasan/apiservice"
         ports:
           - containerPort: 3333
@@ -25,11 +25,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodejs-app
+  name: nodejsps-app
   namespace: default
 spec:
   selector:
-    app: nodejs-app
+    app: nodejsps-app
   type: LoadBalancer
   ports:
   - name: http
