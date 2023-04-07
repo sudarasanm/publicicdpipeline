@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: nodejs-app
-        image: "sudrsan/testcicdpipeline"
+        image: "sudrasan/apiservice"
         ports:
           - containerPort: 3333
 ---
